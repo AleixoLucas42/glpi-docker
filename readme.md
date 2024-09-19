@@ -23,3 +23,7 @@
 | tech      | tech          | Tech account           |
 | normal    | normal        | Normal user            |
 | post-only | post-only     | Account for post only  |
+
+## Links
+- [Github](https://github.com/AleixoLucas42/glpi-docker)
+- [Docker hub](https://hub.docker.com/repository/docker/aleixolucas/glpi)
