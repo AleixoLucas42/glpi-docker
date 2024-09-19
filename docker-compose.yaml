@@ -1,0 +1,27 @@
+name: glpi-stack
+services:
+  mariadb:
+    container_name: mariadb
+    hostname: mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=PasswordS3Cur3
+      - MARIADB_DATABASE=glpi
+      - MARIADB_PASSWORD=glpi
+    volumes:
+      - ./glpi-database-data/mariadb:/var/lib/mysql
+    restart: always
+    image: mariadb:latest
+  glpi:
+    image: aleixolucas/glpi
+    environment:
+      TIMEZONE: "America/Sao_Paulo"
+      UPLOAD_MAX_FILESIZE: 100M
+      POST_MAX_FILESIZE: 50M
+    volumes:
+      - ./glpi-data/:/var/www/html/glpi/config/:rw
+    links:
+      - "mariadb:mariadb"
+    ports:
+      - 8080:80
+    depends_on:
+      - mariadb
