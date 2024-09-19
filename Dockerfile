@@ -23,6 +23,5 @@ RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/glpi|' /etc/
 RUN wget https://github.com/glpi-project/glpi/releases/download/$GLPI_VERSION/glpi-$GLPI_VERSION.tgz
 RUN tar xvf glpi-$GLPI_VERSION.tgz
 RUN mv glpi /var/www/html/
-RUN chown -R www-data:www-data /var/www/html/
 
 CMD ["bash", "-c", "chown www-data:www-data -R /var/www/html/ && /usr/sbin/apache2ctl -D FOREGROUND"]
